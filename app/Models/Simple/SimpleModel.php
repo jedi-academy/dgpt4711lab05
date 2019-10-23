@@ -90,7 +90,7 @@ class SimpleModel
 			$this->origin = $origin;
 		if ( ! empty($keyField))
 			$this->keyField = $keyField;
-		if ( ! enpty($entity))
+		if ( ! empty($entity))
 			$this->entity = $entity;
 
 		// start with an empty collection
