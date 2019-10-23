@@ -43,7 +43,7 @@ class CSVModel extends SimpleModel
 					$record = new \stdClass();
 					for ($i = 0; $i < count($this->fields); $i ++ )
 						$record->{$this->fields[$i]} = $data[$i];
-					$key = $record->{$this->keyfield};
+					$key = $record->{$this->keyField};
 					$this->_data[$key] = $record;
 				}
 			}
