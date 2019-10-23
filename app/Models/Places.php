@@ -4,10 +4,11 @@
     use App\Models\Simple\XMLModel;
     class Places extends XMLModel
     {
-        protected $data   = [
-            
-        ];
-        
+        protected $origin   =  '/data/xmldata.xml';
+        protected  $keyField ='id';
+        protected $validationRules="";
+
+
         public function findAll()
 	{
 		return $this->data;

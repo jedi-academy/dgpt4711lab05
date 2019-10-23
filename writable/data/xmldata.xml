@@ -1,11 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-
+<?xml version="1.0"?>
 <root>
-    
+  <record>
+    <id>1</id>
+    <name>Hong Kong</name>
+    <description>A special administrative region on the eastern side of the Pearl River estuary in southern China.</description>
+    <link>http://www.discoverhongkong.com/eng/index.jsp</link>
+    <image>hongkong.jpg</image>
+  </record>
+  
+  <record>
+    <id>2</id>
+    <name>Macau</name>
+    <description>A special administrative region on the western side of the Pearl River estuary in southern China.</description>
+    <link>http://en.macaotourism.gov.mo/index.php</link>
+    <image>macau.jpg</image>
+  </record>
+  
+  <record>
+    <id>3</id>
+    <name>Thailand</name>
+    <description>A country at the centre of the Southeast Asian Indochinese peninsula composed of 76 provinces.</description>
+    <link>http://www.tourismthailand.org/</link>
+    <image>thailand.jpg</image>
+  </record>
+  
+   <record>
+    <id>4</id>
+    <name>Japan</name>
+    <description>An island country in East Asia.</description>
+    <link>http://www.jnto.go.jp/eng/</link>
+    <image>japan.jpg</image>
+  </record>
+  
+   <record>
+    <id>5</id>
+    <name>Vietnam</name>
+    <description>The easternmost country on the Indochina Peninsula.</description>
+    <link>http://www.vietnamtourism.gov.vn/english/</link>
+    <image>vietnam.jpg</image>
+  </record>
+  
 </root>
