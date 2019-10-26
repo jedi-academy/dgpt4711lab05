@@ -1,5 +1,5 @@
 <?php
-namespace App\Models\Simple;
+namespace Simple\Models;
 
 /**
  * SimpleModel persisted as JSON document
@@ -90,7 +90,7 @@ class JSONModel extends SimpleModel
 		    	$first = false; 
 
 		    	//var_dump($oj->children());
-		    	$one = new \stdClass();
+		    	$one = new stdClass();
 
 		    	//get objects one by one
 		    	foreach ($oj as $key => $value) {

@@ -1,5 +1,5 @@
 <?php
-namespace App\Models\Simple;
+namespace Simple\Models;
 
 /**
  * SimpleModel persisted as CSV document
@@ -40,10 +40,10 @@ class CSVModel extends SimpleModel
 				else
 				{
 					// build object from a row
-					$record = new \stdClass();
+					$record = new stdClass();
 					for ($i = 0; $i < count($this->fields); $i ++ )
 						$record->{$this->fields[$i]} = $data[$i];
-					$key = $record->{$this->keyField};
+					$key = $record->{$this->keyfield};
 					$this->_data[$key] = $record;
 				}
 			}

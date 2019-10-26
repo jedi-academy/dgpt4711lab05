@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Simple;
+namespace Simple\Models;
 
 /**
  * Class SimpleModel
@@ -90,7 +90,7 @@ class SimpleModel
 			$this->origin = $origin;
 		if ( ! empty($keyField))
 			$this->keyField = $keyField;
-		if ( ! empty($entity))
+		if ( ! enpty($entity))
 			$this->entity = $entity;
 
 		// start with an empty collection
@@ -408,5 +408,98 @@ class SimpleModel
 		return $this->builder()->countAllResults($reset, $test);
 	}
 
+	//--------------------------------------------------------------------
+	// Magic
+	//--------------------------------------------------------------------
 
+	/**
+	 * Provides/instantiates the builder/db connection and model's table/primary key names and return type.
+	 *
+	 * @param string $name
+	 *
+	 * @return mixed
+	 */
+	public function __get(string $name)
+	{
+		if (property_exists($this, $name))
+		{
+			return $this->{$name};
+		}
+		elseif (isset($this->db->$name))
+		{
+			return $this->db->$name;
+		}
+		elseif (isset($this->builder()->$name))
+		{
+			return $this->builder()->$name;
+		}
+
+		return null;
+	}
+
+	/**
+	 * Checks for the existence of properties across this model, builder, and db connection.
+	 *
+	 * @param string $name
+	 *
+	 * @return boolean
+	 */
+	public function __isset(string $name): bool
+	{
+		if (property_exists($this, $name))
+		{
+			return true;
+		}
+		elseif (isset($this->db->$name))
+		{
+			return true;
+		}
+		elseif (isset($this->builder()->$name))
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	//--------------------------------------------------------------------
+
+	/**
+	 * Provides direct access to method in the builder (if available)
+	 * and the database connection.
+	 *
+	 * @param string $name
+	 * @param array  $params
+	 *
+	 * @return Model|null
+	 */
+	public function __call(string $name, array $params)
+	{
+		$result = null;
+
+		if (method_exists($this->db, $name))
+		{
+			$result = $this->db->$name(...$params);
+		}
+		elseif (method_exists($builder = $this->builder(), $name))
+		{
+			$result = $builder->$name(...$params);
+		}
+
+		// Don't return the builder object unless specifically requested
+		//, since that will interrupt the usability flow
+		// and break intermingling of model and builder methods.
+		if ($name !== 'builder' && empty($result))
+		{
+			return $result;
+		}
+		if ($name !== 'builder' && ! $result instanceof BaseBuilder)
+		{
+			return $result;
+		}
+
+		return $this;
+	}
+
+	//--------------------------------------------------------------------
 }
