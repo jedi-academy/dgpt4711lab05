@@ -1,5 +1,5 @@
 <?php
-//namespace Simple\Models;
+namespace App\Models\Simple;
 
 /**
  * SimpleModel persisted as JSON document
@@ -16,7 +16,7 @@ class JSONModel extends SimpleModel
 	 */
 	function __construct($origin = null, $keyField = 'id', $entity = null)
 	{
-		parent::__construct();
+		parent::__construct($origin, $keyField, $entity);
 
 		// and populate the collection
 		$this->load();

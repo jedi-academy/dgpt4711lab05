@@ -16,7 +16,7 @@ class XMLModel extends SimpleModel
 	 */
 	function __construct($origin = null, $keyField = 'id', $entity = null)
 	{
-		parent::__construct();
+		parent::__construct($origin, $keyField, $entity);
 
 		// and populate the collection
 		$this->load();
@@ -35,7 +35,7 @@ class XMLModel extends SimpleModel
 			$first = true;
 			foreach ($xml->children() as $child)
 			{
-				$record = new stdClass();
+				$record = new \stdClass();
 				foreach ($child->children() as $kid)
 				{
 					$key = $kid->getName();

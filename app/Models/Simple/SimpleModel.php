@@ -1,6 +1,6 @@
 <?php
 
-//namespace Simple\Models;
+namespace App\Models\Simple;
 
 /**
  * Class SimpleModel
@@ -158,7 +158,7 @@ class SimpleModel
 	 */
 	public function find($id = null)
 	{
-		return (isset($this->data[$key])) ? $this->data[$key] : null;
+		return (isset($this->data[$id])) ? (array) $this->data[$id] : null;
 	}
 
 	/**
