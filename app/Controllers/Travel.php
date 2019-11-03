@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+helper('form');
 
 class Travel extends BaseController
 {
@@ -18,7 +19,7 @@ class Travel extends BaseController
         // and have it render the template with those
     ->render('placeslist'); 
      */
-     
+        
      $view = \Config\Services::renderer();
      $output = $view->render('top') .
      $view->render('content') .
@@ -32,12 +33,22 @@ class Travel extends BaseController
      unset($headings[count($headings)-1]);
      $table->setHeading($headings);
      
+     echo '<img src="../../image/hongkong.jpg"/>';
+     echo '<img src="../../image/macau.jpg"/>';
+     echo '<img src="../../image/thailand.jpg"/>';
+     echo '<img src="../../image/japan.jpg"/>';
+     echo '<img src="../../image/vietnam.jpg"/>';
+     
      foreach($data as $record){	
-        $table->addRow($record->id, $record->name, $record->description,$record->link);
+        $table->addRow($record->id, $record->name, $record->description,$record->link); 
      }
+     
      echo $content = $table->generate();
-       
+     
+     echo form_submit($data="#");
+     
      return $output;
+     
     }
     public function showme($id)
     {
