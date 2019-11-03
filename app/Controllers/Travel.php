@@ -16,7 +16,7 @@ class Travel extends BaseController
         // tell it about the substitions
     return $parser->setData(['records' => $records])
         // and have it render the template with those
-    ->render('placelist'); 
+    ->render('placeslist'); 
      */
      
      $view = \Config\Services::renderer();
@@ -41,21 +41,15 @@ class Travel extends BaseController
     }
     public function showme($id)
     {
-        /*
-        // connect to the model
+       // connect to the model
       $places = new \App\Models\Places();
-        // retrieve all the records
+       // retrieve all the records
       $record = $places->find($id);
       // get a template parser
       $parser = \Config\Services::parser();
       // tell it about the substitions
       return $parser->setData($record)
       // and have it render the template with those
-      ->render('oneplace');  
-        */
-      echo form_open();
-      echo form_button('name','content');
-      
-      echo form_close();
+      ->render('oneplace');    
     }
 }
